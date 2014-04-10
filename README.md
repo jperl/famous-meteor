@@ -4,16 +4,16 @@ We use this seed project to compile the famous library, which we drop into meteo
 
 1) Add all of the dependencies you want to `src/main.js` then build the project with `grunt`.
 
-2) Take the three compiled library files (`lib\famous\core\famous.css`, `dist\src\..polyfills.js`, `dist\src\..main.js`) and put them in your meteor client compatibility folder.
+2) Take the three compiled library files (`lib/famous/core/famous.css`, `dist/src/..polyfills.js`, `dist/src/..main.js`) and put them in `famous/lib`
 
-3) Add famous_wrapper.js to your project
+3) Add `packages/famous` to your packages folder, and include it in .meteor/packages.
 
-4) Wrap all of your famous code like so
+4) Wrap all of your famous code like so. See `packages/famous/app.js` for an example.
 
-        Famous.loaded(function () {
-            //app here
-            Famous.Engine.createContext();
-        });
+    Famous.loaded(function () {
+        // famous code here
+        Famous.Engine.createContext();
+    });
 
 5) Enjoy Famo.us + Meteor
 
