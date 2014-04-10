@@ -10,4 +10,5 @@ require.config({
         'famous-polyfills': '../lib/famous-polyfills/index'
     }
 });
+
 require(['main']);

@@ -4,7 +4,9 @@ We use this seed project to compile the famous library, which we drop into meteo
 
 1) Add all of the dependencies you want to `src/main.js` then build the project with `grunt`.
 
-2) Take the three compiled library files (`lib/famous/core/famous.css`, `dist/src/..polyfills.js`, `dist/src/..main.js`) and put them in `famous/lib`
+2) Take the compiled library file (`dist/src/..main.js`), put it in `famous/lib`, and rename to `famous.js`.
+
+   Replace the the second to last line `}), e(["main"])` with `UI.body.rendered = function() { e(["main"]) }`
 
 3) Add `packages/famous` to your packages folder, and include it in .meteor/packages.
 

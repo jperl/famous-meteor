@@ -1833,11 +1833,9 @@
                 }
             })
         }
-    }), i("main", ["require", "exports", "module", "famous/core/Engine", "famous/core/Entity", "famous/core/EventHandler", "famous/math/Matrix", "famous/core/Modifier", "famous/core/RenderNode", "famous/core/Surface", "famous/core/Transform", "famous/core/View", "famous/core/ViewSequence", "famous/views/Scrollview", "famous/inputs/FastClick", "famous/utilities/Utility"], function (t) {
-        Meteor.startup(function () {
-            Famous.Engine = t("famous/core/Engine"), Famous.Entity = t("famous/core/Entity"), Famous.EventHandler = t("famous/core/EventHandler"), Famous.Matrix = t("famous/math/Matrix"), Famous.Modifier = t("famous/core/Modifier"), Famous.RenderNode = t("famous/core/RenderNode"), Famous.Surface = t("famous/core/Surface"), Famous.Transform = t("famous/core/Transform"), Famous.View = t("famous/core/View"), Famous.ViewSequence = t("famous/core/ViewSequence"), Famous.Scrollview = t("famous/views/Scrollview"), Famous.FastClick = t("famous/inputs/FastClick"), Famous.Utility = t("famous/utilities/Utility"), _.each(Famous._onLoad, function (e) {
-                e(t)
-            })
+    }), i("main", ["require", "exports", "module", "famous/core/Engine", "famous/core/Entity", "famous/core/EventHandler", "famous/math/Matrix", "famous/core/Modifier", "famous/core/RenderNode", "famous/core/Surface", "famous/core/Transform", "famous/core/View", "famous/core/ViewSequence", "famous/views/Scrollview", "famous/inputs/FastClick", "famous/transitions/Transitionable", "famous/utilities/Utility"], function (t) {
+        Famous.Engine = t("famous/core/Engine"), Famous.Entity = t("famous/core/Entity"), Famous.EventHandler = t("famous/core/EventHandler"), Famous.Matrix = t("famous/math/Matrix"), Famous.Modifier = t("famous/core/Modifier"), Famous.RenderNode = t("famous/core/RenderNode"), Famous.Surface = t("famous/core/Surface"), Famous.Transform = t("famous/core/Transform"), Famous.View = t("famous/core/View"), Famous.ViewSequence = t("famous/core/ViewSequence"), Famous.Scrollview = t("famous/views/Scrollview"), Famous.FastClick = t("famous/inputs/FastClick"), Famous.Transitionable = t("famous/transitions/Transitionable"), Famous.Utility = t("famous/utilities/Utility"), _.each(Famous._onLoad, function (e) {
+            e(t)
         })
-    }), e(["main"])
+    }), UI.body.rendered = function() { e(["main"]) }
 }();
