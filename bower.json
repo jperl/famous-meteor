@@ -1,0 +1,35 @@
+{
+  "name": "fame",
+  "description": "Seed project to get started with Famo.us.",
+  "version": "0.1.0",
+  "homepage": "https://github.com//fame",
+  "authors": [{
+    "name": "Jon Perl",
+    "url": "http://github.com//"
+  }],
+  "main": "app/index.html",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "famo.us"
+  ],
+  "license": "MPL 2.0",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "src/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "requirejs": "~2.1.11",
+    "almond": "~0.2.9",
+    "famous-polyfills": "git@github.com:Famous/polyfills.git#0.1.1",
+    "famous": "git@github.com:Famous/famous.git#v0_1_1"
+  },
+  "scripts": {
+    "postinstall": "grunt bower"
+  }
+}
