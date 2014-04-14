@@ -1,8 +1,14 @@
-Famous.loaded(function () {
-    var Engine = Famous.Engine;
-    var Lightbox = Famous.Lightbox;
-    var View = Famous.View;
-    var Surface = Famous.Surface;
+// setup famous app
+
+require("famous-polyfills"); // Add polyfills
+require("famous/core/famous"); // Add the default css file
+
+Meteor.startup(function () {
+    var Engine = require("famous/core/Engine");
+    var View = require("famous/core/View");
+
+    var Surface = require("famous/core/Surface");
+    var Lightbox = require("famous/views/Lightbox");
 
     function App() {
         View.apply(this, arguments);
@@ -37,6 +43,7 @@ Famous.loaded(function () {
             this.lightbox.show(this._sectionSurfaces[sectionName]);
         }
     };
+
 
     // create the App from the template
     var app = new App();

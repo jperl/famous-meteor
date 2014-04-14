@@ -1,3 +1,5 @@
+// setup template events
+
 Template.home.events({
     click: function () {
         Router.go('about');
