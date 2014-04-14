@@ -43,13 +43,13 @@
     var t, e, i;
     !function (s) {
         function n(t, e) {
-            return x.call(t, e)
+            return O.call(t, e)
         }
 
         function o(t, e) {
-            var i, s, n, o, r, a, h, u, c, p, l, f = e && e.split("/"), d = v.map, _ = d && d["*"] || {};
+            var i, s, n, o, r, a, h, u, c, p, l, f = e && e.split("/"), d = m.map, _ = d && d["*"] || {};
             if (t && "." === t.charAt(0))if (e) {
-                for (f = f.slice(0, f.length - 1), t = t.split("/"), r = t.length - 1, v.nodeIdCompat && S.test(t[r]) && (t[r] = t[r].replace(S, "")), t = f.concat(t), c = 0; c < t.length; c += 1)if (l = t[c], "." === l)t.splice(c, 1), c -= 1; else if (".." === l) {
+                for (f = f.slice(0, f.length - 1), t = t.split("/"), r = t.length - 1, m.nodeIdCompat && T.test(t[r]) && (t[r] = t[r].replace(T, "")), t = f.concat(t), c = 0; c < t.length; c += 1)if (l = t[c], "." === l)t.splice(c, 1), c -= 1; else if (".." === l) {
                     if (1 === c && (".." === t[2] || ".." === t[0]))break;
                     c > 0 && (t.splice(c - 1, 2), c -= 2)
                 }
@@ -71,7 +71,7 @@
 
         function r(t, e) {
             return function () {
-                return f.apply(s, O.call(arguments, 0).concat([t, e]))
+                return f.apply(s, x.call(arguments, 0).concat([t, e]))
             }
         }
 
@@ -90,9 +90,9 @@
         function u(t) {
             if (n(y, t)) {
                 var e = y[t];
-                delete y[t], m[t] = !0, l.apply(s, e)
+                delete y[t], v[t] = !0, l.apply(s, e)
             }
-            if (!n(g, t) && !n(m, t))throw new Error("No " + t);
+            if (!n(g, t) && !n(v, t))throw new Error("No " + t);
             return g[t]
         }
 
@@ -103,11 +103,11 @@
 
         function p(t) {
             return function () {
-                return v && v.config && v.config[t] || {}
+                return m && m.config && m.config[t] || {}
             }
         }
 
-        var l, f, d, _, g = {}, y = {}, v = {}, m = {}, x = Object.prototype.hasOwnProperty, O = [].slice, S = /\.js$/;
+        var l, f, d, _, g = {}, y = {}, m = {}, v = {}, O = Object.prototype.hasOwnProperty, x = [].slice, T = /\.js$/;
         d = function (t, e) {
             var i, s = c(t), n = s[0];
             return t = s[1], n && (n = o(n, e), i = u(n)), n ? t = i && i.normalize ? i.normalize(t, a(e)) : o(t, e) : (t = o(t, e), s = c(t), n = s[0], t = s[1], n && (i = u(n))), {f: n ? n + "!" + t : t, n: t, pr: n, p: i}
@@ -119,18 +119,18 @@
         }, module: function (t) {
             return{id: t, uri: "", exports: g[t], config: p(t)}
         }}, l = function (t, e, i, o) {
-            var a, c, p, l, f, v, x = [], O = typeof i;
-            if (o = o || t, "undefined" === O || "function" === O) {
-                for (e = !e.length && i.length ? ["require", "exports", "module"] : e, f = 0; f < e.length; f += 1)if (l = d(e[f], o), c = l.f, "require" === c)x[f] = _.require(t); else if ("exports" === c)x[f] = _.exports(t), v = !0; else if ("module" === c)a = x[f] = _.module(t); else if (n(g, c) || n(y, c) || n(m, c))x[f] = u(c); else {
+            var a, c, p, l, f, m, O = [], x = typeof i;
+            if (o = o || t, "undefined" === x || "function" === x) {
+                for (e = !e.length && i.length ? ["require", "exports", "module"] : e, f = 0; f < e.length; f += 1)if (l = d(e[f], o), c = l.f, "require" === c)O[f] = _.require(t); else if ("exports" === c)O[f] = _.exports(t), m = !0; else if ("module" === c)a = O[f] = _.module(t); else if (n(g, c) || n(y, c) || n(v, c))O[f] = u(c); else {
                     if (!l.p)throw new Error(t + " missing " + c);
-                    l.p.load(l.n, r(o, !0), h(c), {}), x[f] = g[c]
+                    l.p.load(l.n, r(o, !0), h(c), {}), O[f] = g[c]
                 }
-                p = i ? i.apply(g[t], x) : void 0, t && (a && a.exports !== s && a.exports !== g[t] ? g[t] = a.exports : p === s && v || (g[t] = p))
+                p = i ? i.apply(g[t], O) : void 0, t && (a && a.exports !== s && a.exports !== g[t] ? g[t] = a.exports : p === s && m || (g[t] = p))
             } else t && (g[t] = i)
         }, t = e = f = function (t, e, i, n, o) {
             if ("string" == typeof t)return _[t] ? _[t](e) : u(d(t, e).f);
             if (!t.splice) {
-                if (v = t, v.deps && f(v.deps, v.callback), !e)return;
+                if (m = t, m.deps && f(m.deps, m.callback), !e)return;
                 e.splice ? (t = e, e = i, i = null) : t = s
             }
             return e = e || function () {
@@ -229,10 +229,10 @@
             c[0] = 1 - u * h[0] * h[0], c[5] = 1 - u * h[1] * h[1], c[10] = 1 - u * h[2] * h[2], c[1] = -u * h[0] * h[1], c[2] = -u * h[0] * h[2], c[6] = -u * h[1] * h[2], c[4] = c[1], c[8] = c[2], c[9] = c[6];
             var p = r.multiply(c, t), l = [p[5], p[6]], f = o(l[0]), d = n(l), _ = [l[0] + f * d, l[1]], g = 2 / s(_), y = [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1];
             y[5] = 1 - g * _[0] * _[0], y[10] = 1 - g * _[1] * _[1], y[6] = -g * _[0] * _[1], y[9] = y[6];
-            var v = r.multiply(y, c), m = r.multiply(v, t), x = r.scale(m[0] < 0 ? -1 : 1, m[5] < 0 ? -1 : 1, m[10] < 0 ? -1 : 1);
-            m = r.multiply(m, x), v = r.multiply(x, v);
-            var O = {};
-            return O.translate = r.getTranslate(t), O.rotate = [Math.atan2(-v[6], v[10]), Math.asin(v[2]), Math.atan2(-v[1], v[0])], O.rotate[0] || (O.rotate[0] = 0, O.rotate[2] = Math.atan2(v[4], v[5])), O.scale = [m[0], m[5], m[10]], O.skew = [Math.atan2(m[9], O.scale[2]), Math.atan2(m[8], O.scale[2]), Math.atan2(m[4], O.scale[0])], Math.abs(O.rotate[0]) + Math.abs(O.rotate[2]) > 1.5 * Math.PI && (O.rotate[1] = Math.PI - O.rotate[1], O.rotate[1] > Math.PI && (O.rotate[1] -= 2 * Math.PI), O.rotate[1] < -Math.PI && (O.rotate[1] += 2 * Math.PI), O.rotate[0] < 0 ? O.rotate[0] += Math.PI : O.rotate[0] -= Math.PI, O.rotate[2] < 0 ? O.rotate[2] += Math.PI : O.rotate[2] -= Math.PI), O
+            var m = r.multiply(y, c), v = r.multiply(m, t), O = r.scale(v[0] < 0 ? -1 : 1, v[5] < 0 ? -1 : 1, v[10] < 0 ? -1 : 1);
+            v = r.multiply(v, O), m = r.multiply(O, m);
+            var x = {};
+            return x.translate = r.getTranslate(t), x.rotate = [Math.atan2(-m[6], m[10]), Math.asin(m[2]), Math.atan2(-m[1], m[0])], x.rotate[0] || (x.rotate[0] = 0, x.rotate[2] = Math.atan2(m[4], m[5])), x.scale = [v[0], v[5], v[10]], x.skew = [Math.atan2(v[9], x.scale[2]), Math.atan2(v[8], x.scale[2]), Math.atan2(v[4], x.scale[0])], Math.abs(x.rotate[0]) + Math.abs(x.rotate[2]) > 1.5 * Math.PI && (x.rotate[1] = Math.PI - x.rotate[1], x.rotate[1] > Math.PI && (x.rotate[1] -= 2 * Math.PI), x.rotate[1] < -Math.PI && (x.rotate[1] += 2 * Math.PI), x.rotate[0] < 0 ? x.rotate[0] += Math.PI : x.rotate[0] -= Math.PI, x.rotate[2] < 0 ? x.rotate[2] += Math.PI : x.rotate[2] -= Math.PI), x
         }, r.average = function (t, e, i) {
             i = void 0 === i ? .5 : i;
             for (var s = r.interpret(t), n = r.interpret(e), o = {translate: [0, 0, 0], rotate: [0, 0, 0], scale: [0, 0, 0], skew: [0, 0, 0]}, a = 0; 3 > a; a++)o.translate[a] = (1 - i) * s.translate[a] + i * n.translate[a], o.rotate[a] = (1 - i) * s.rotate[a] + i * n.rotate[a], o.scale[a] = (1 - i) * s.scale[a] + i * n.scale[a], o.skew[a] = (1 - i) * s.skew[a] + i * n.skew[a];
@@ -675,7 +675,7 @@
         }, i.exports = s
     }), i("famous/core/Engine", ["require", "exports", "module", "./Context", "./EventHandler", "./OptionsManager"], function (t, e, i) {
         function s() {
-            v.runLoop ? (c.step(), requestAnimationFrame(s)) : _ = !1
+            m.runLoop ? (c.step(), requestAnimationFrame(s)) : _ = !1
         }
 
         function n(t) {
@@ -687,13 +687,13 @@
             y.emit("resize")
         }
 
-        var o, r, a = t("./Context"), h = t("./EventHandler"), u = t("./OptionsManager"), c = {}, p = [], l = [], f = [], d = Date.now(), _ = !0, g = {}, y = new h, v = {containerType: "div", containerClass: "famous-container", fpsCap: void 0, runLoop: !0}, m = new u(v), x = 10;
+        var o, r, a = t("./Context"), h = t("./EventHandler"), u = t("./OptionsManager"), c = {}, p = [], l = [], f = [], d = Date.now(), _ = !0, g = {}, y = new h, m = {containerType: "div", containerClass: "famous-container", fpsCap: void 0, runLoop: !0}, v = new u(m), O = 10;
         c.step = function () {
             var t = Date.now();
             if (!(r && r > t - d)) {
                 var e = 0;
                 for (o = t - d, d = t, y.emit("prerender"), e = 0; e < l.length; e++)l[e].call(this);
-                for (l.splice(0); f.length && Date.now() - t < x;)f.shift().call(this);
+                for (l.splice(0); f.length && Date.now() - t < O;)f.shift().call(this);
                 for (e = 0; e < p.length; e++)p[e].update();
                 y.emit("postrender")
             }
@@ -714,11 +714,11 @@
         }, c.setFPSCap = function (t) {
             r = Math.floor(1e3 / t)
         }, c.getOptions = function () {
-            return m.getOptions.apply(m, arguments)
+            return v.getOptions.apply(v, arguments)
         }, c.setOptions = function () {
-            return m.setOptions.apply(m, arguments)
+            return v.setOptions.apply(v, arguments)
         }, c.createContext = function (t) {
-            if (void 0 === t)t = document.createElement(v.containerType), t.classList.add(v.containerClass), document.body.appendChild(t); else if (!(t instanceof Element))throw t = document.createElement(v.containerType), new Error("Tried to create context on non-existent element");
+            if (void 0 === t)t = document.createElement(m.containerType), t.classList.add(m.containerClass), document.body.appendChild(t); else if (!(t instanceof Element))throw t = document.createElement(m.containerType), new Error("Tried to create context on non-existent element");
             var e = new a(t);
             return c.registerContext(e), e
         }, c.registerContext = function (t) {
@@ -727,7 +727,7 @@
             l.push(t)
         }, c.defer = function (t) {
             f.push(t)
-        }, m.on("change", function (t) {
+        }, v.on("change", function (t) {
             "fpsCap" === t.id ? c.setFPSCap(t.value) : "runLoop" === t.id && !_ && t.value && (_ = !0, requestAnimationFrame(s))
         }), i.exports = c
     }), i("famous/math/Vector", ["require", "exports", "module"], function (t, e, i) {
@@ -1008,7 +1008,7 @@
             t.style.webkitTransformOrigin = c(e)
         } : function (t, e) {
             t.style.transformOrigin = c(e)
-        }, v = _ ? function (t) {
+        }, m = _ ? function (t) {
             t.style.webkitTransform = "scale3d(0.0001,0.0001,1)", t.style.opacity = 0
         } : function (t) {
             t.style.transform = "scale3d(0.0001,0.0001,1)", t.style.opacity = 0
@@ -1024,7 +1024,7 @@
                 var h = o;
                 o = [this.size[0], this.size[1]], void 0 === o[0] && h[0] && (o[0] = h[0]), void 0 === o[1] && h[1] && (o[1] = h[1])
             }
-            if (p(this._size, o) && (this._size = [o[0], o[1]], this._sizeDirty = !0), !i && this._matrix)return this._matrix = null, this._opacity = 0, void v(e);
+            if (p(this._size, o) && (this._size = [o[0], o[1]], this._sizeDirty = !0), !i && this._matrix)return this._matrix = null, this._opacity = 0, void m(e);
             if (this._opacity !== s && (this._opacity = s, e.style.opacity = s >= 1 ? "0.999999" : s), p(this._origin, n) || d.notEquals(this._matrix, i)) {
                 i || (i = d.identity), this._matrix = i;
                 var u = i;
@@ -1044,7 +1044,7 @@
             var s = this.getClassList();
             for (r.call(this, i), e = 0; e < s.length; e++)i.classList.remove(s[e]);
             if (this.elementClass)if (this.elementClass instanceof Array)for (e = 0; e < this.elementClass.length; e++)i.classList.remove(this.elementClass[e]); else i.classList.remove(this.elementClass);
-            o.call(this, i), this._currTarget = null, t.deallocate(i), v(i)
+            o.call(this, i), this._currTarget = null, t.deallocate(i), m(i)
         }, s.prototype.deploy = function (t) {
             var e = this.getContent();
             if (e instanceof Node) {
@@ -1129,9 +1129,40 @@
             var t = this.get();
             return t ? t.render.apply(t, arguments) : null
         }, i.exports = s
+    }), i("famous/views/Lightbox", ["require", "exports", "module", "famous/core/Transform", "famous/core/Modifier", "famous/core/RenderNode", "famous/utilities/Utility", "famous/core/OptionsManager", "famous/transitions/Transitionable", "famous/transitions/TransitionableTransform"], function (t, e, i) {
+        function s(t) {
+            this.options = Object.create(s.DEFAULT_OPTIONS), this._optionsManager = new h(this.options), t && this.setOptions(t), this._showing = !1, this.nodes = [], this.transforms = [], this.states = []
+        }
+
+        var n = t("famous/core/Transform"), o = t("famous/core/Modifier"), r = t("famous/core/RenderNode"), a = t("famous/utilities/Utility"), h = t("famous/core/OptionsManager"), u = t("famous/transitions/Transitionable"), c = t("famous/transitions/TransitionableTransform");
+        s.DEFAULT_OPTIONS = {inTransform: n.scale(.001, .001, .001), inOpacity: 0, inOrigin: [.5, .5], outTransform: n.scale(.001, .001, .001), outOpacity: 0, outOrigin: [.5, .5], showTransform: n.identity, showOpacity: 1, showOrigin: [.5, .5], inTransition: !0, outTransition: !0, overlap: !1}, s.prototype.setOptions = function (t) {
+            return this._optionsManager.setOptions(t)
+        }, s.prototype.show = function (t, e, i) {
+            if (!t)return this.hide(i);
+            if (e instanceof Function && (i = e, e = void 0), this._showing) {
+                if (!this.options.overlap)return void this.hide(this.show.bind(this, t, i));
+                this.hide()
+            }
+            this._showing = !0;
+            var s = {transform: new c(this.options.inTransform), origin: new u(this.options.inOrigin), opacity: new u(this.options.inOpacity)}, n = new o({transform: s.transform, opacity: s.opacity, origin: s.origin}), h = new r;
+            h.add(n).add(t), this.nodes.push(h), this.states.push(s), this.transforms.push(n);
+            var p = i ? a.after(3, i) : void 0;
+            e || (e = this.options.inTransition), s.transform.set(this.options.showTransform, e, p), s.opacity.set(this.options.showOpacity, e, p), s.origin.set(this.options.showOrigin, e, p)
+        }, s.prototype.hide = function (t, e) {
+            if (this._showing) {
+                this._showing = !1, t instanceof Function && (e = t, t = void 0);
+                var i = this.nodes[this.nodes.length - 1], s = this.transforms[this.transforms.length - 1], n = this.states[this.states.length - 1], o = a.after(3, function () {
+                    this.nodes.splice(this.nodes.indexOf(i), 1), this.states.splice(this.states.indexOf(n), 1), this.transforms.splice(this.transforms.indexOf(s), 1), e && e.call(this)
+                }.bind(this));
+                t || (t = this.options.outTransition), n.transform.set(this.options.outTransform, t, o), n.opacity.set(this.options.outOpacity, t, o), n.origin.set(this.options.outOrigin, t, o)
+            }
+        }, s.prototype.render = function () {
+            for (var t = [], e = 0; e < this.nodes.length; e++)t.push(this.nodes[e].render());
+            return t
+        }, i.exports = s
     }), i("famous/physics/PhysicsEngine", ["require", "exports", "module", "famous/core/EventHandler"], function (t, e, i) {
         function s(t) {
-            this.options = Object.create(s.DEFAULT_OPTIONS), t && this.setOptions(t), this._particles = [], this._bodies = [], this._agents = {}, this._forces = [], this._constraints = [], this._buffer = 0, this._timestamp = 17, this._minTimeStep = 1e3 / 120, this._maxTimestep = 17, this._prevTime = x(), this._isSleeping = !1, this._eventHandler = null, this._currAgentId = 0, this._hasBodies = !1
+            this.options = Object.create(s.DEFAULT_OPTIONS), t && this.setOptions(t), this._particles = [], this._bodies = [], this._agents = {}, this._forces = [], this._constraints = [], this._buffer = 0, this._timestamp = 17, this._minTimeStep = 1e3 / 120, this._maxTimestep = 17, this._prevTime = O(), this._isSleeping = !1, this._eventHandler = null, this._currAgentId = 0, this._hasBodies = !1
         }
 
         function n(t) {
@@ -1199,14 +1230,14 @@
             return t
         }
 
-        function v() {
+        function m() {
             for (var t = 0, e = this._constraints.length - 1; e > -1; e--)t += this._constraints[e].getEnergy() || 0;
             return t
         }
 
-        var m = t("famous/core/EventHandler");
+        var v = t("famous/core/EventHandler");
         s.DEFAULT_OPTIONS = {constraintSteps: 1, sleepTolerance: 1e-7};
-        var x = function () {
+        var O = function () {
             return Date.now
         }();
         s.prototype.setOptions = function (t) {
@@ -1254,20 +1285,20 @@
         }, s.prototype.forEach = function (t, e) {
             this.forEachParticle(t, e), this.forEachBody(t, e)
         }, s.prototype.getEnergy = function () {
-            return g.call(this) + y.call(this) + v.call(this)
+            return g.call(this) + y.call(this) + m.call(this)
         }, s.prototype.step = function () {
-            var t = x(), e = t - this._prevTime;
+            var t = O(), e = t - this._prevTime;
             this._prevTime = t, e < this._minTimeStep || (e > this._maxTimeStep && (e = this._maxTimestep), _.call(this, this._timestamp))
         }, s.prototype.isSleeping = function () {
             return this._isSleeping
         }, s.prototype.sleep = function () {
             this.emit("end", this), this._isSleeping = !0
         }, s.prototype.wake = function () {
-            this._prevTime = x(), this.emit("start", this), this._isSleeping = !1
+            this._prevTime = O(), this.emit("start", this), this._isSleeping = !1
         }, s.prototype.emit = function (t, e) {
             null !== this._eventHandler && this._eventHandler.emit(t, e)
         }, s.prototype.on = function (t, e) {
-            null === this._eventHandler && (this._eventHandler = new m), this._eventHandler.on(t, e)
+            null === this._eventHandler && (this._eventHandler = new v), this._eventHandler.on(t, e)
         }, i.exports = s
     }), i("famous/physics/integrators/SymplecticEuler", ["require", "exports", "module", "famous/core/OptionsManager"], function (t, e, i) {
         function s(t) {
@@ -1699,7 +1730,7 @@
         }, i.exports = s
     }), i("famous/views/Scrollview", ["require", "exports", "module", "famous/utilities/Utility", "famous/physics/PhysicsEngine", "famous/physics/bodies/Particle", "famous/physics/forces/Drag", "famous/physics/forces/Spring", "famous/inputs/GenericSync", "famous/core/EventHandler", "famous/core/OptionsManager", "famous/core/ViewSequence", "famous/views/Scroller"], function (t, e, i) {
         function s(t) {
-            this.options = Object.create(s.DEFAULT_OPTIONS), this._optionsManager = new E(this.options), this._node = null, this._physicsEngine = new y, this._particle = new v, this._physicsEngine.addBody(this._particle), this.spring = new x({anchor: [0, 0, 0]}), this.drag = new m({forceFunction: m.FORCE_FUNCTIONS.QUADRATIC}), this.friction = new m({forceFunction: m.FORCE_FUNCTIONS.LINEAR}), this.sync = new O({direction: this.options.direction}), this._eventInput = new S, this._eventOutput = new S, this._eventInput.pipe(this.sync), this.sync.pipe(this._eventInput), S.setInputHandler(this, this._eventInput), S.setOutputHandler(this, this._eventOutput), this._touchCount = 0, this._springState = 0, this._onEdge = 0, this._pageSpringPosition = 0, this._edgeSpringPosition = 0, this._touchVelocity = void 0, this._earlyEnd = !1, this._needsPaginationCheck = !1, this._scroller = new w, this._scroller.positionFrom(this.getPosition.bind(this)), t && this.setOptions(t), a.call(this)
+            this.options = Object.create(s.DEFAULT_OPTIONS), this._optionsManager = new S(this.options), this._node = null, this._physicsEngine = new y, this._particle = new m, this._physicsEngine.addBody(this._particle), this.spring = new O({anchor: [0, 0, 0]}), this.drag = new v({forceFunction: v.FORCE_FUNCTIONS.QUADRATIC}), this.friction = new v({forceFunction: v.FORCE_FUNCTIONS.LINEAR}), this.sync = new x({direction: this.options.direction}), this._eventInput = new T, this._eventOutput = new T, this._eventInput.pipe(this.sync), this.sync.pipe(this._eventInput), T.setInputHandler(this, this._eventInput), T.setOutputHandler(this, this._eventOutput), this._touchCount = 0, this._springState = 0, this._onEdge = 0, this._pageSpringPosition = 0, this._edgeSpringPosition = 0, this._touchVelocity = void 0, this._earlyEnd = !1, this._needsPaginationCheck = !1, this._scroller = new w, this._scroller.positionFrom(this.getPosition.bind(this)), t && this.setOptions(t), a.call(this)
         }
 
         function n(t) {
@@ -1766,7 +1797,7 @@
             this._edgeSpringPosition += t, this._pageSpringPosition += t, this.setPosition(this.getPosition() + t), this._springState === P.EDGE ? this.spring.setOptions({anchor: [this._edgeSpringPosition, 0, 0]}) : this._springState === P.PAGE && this.spring.setOptions({anchor: [this._pageSpringPosition, 0, 0]})
         }
 
-        var g = t("famous/utilities/Utility"), y = t("famous/physics/PhysicsEngine"), v = t("famous/physics/bodies/Particle"), m = t("famous/physics/forces/Drag"), x = t("famous/physics/forces/Spring"), O = t("famous/inputs/GenericSync"), S = t("famous/core/EventHandler"), E = t("famous/core/OptionsManager"), T = t("famous/core/ViewSequence"), w = t("famous/views/Scroller"), b = .5;
+        var g = t("famous/utilities/Utility"), y = t("famous/physics/PhysicsEngine"), m = t("famous/physics/bodies/Particle"), v = t("famous/physics/forces/Drag"), O = t("famous/physics/forces/Spring"), x = t("famous/inputs/GenericSync"), T = t("famous/core/EventHandler"), S = t("famous/core/OptionsManager"), E = t("famous/core/ViewSequence"), w = t("famous/views/Scroller"), b = .5;
         s.DEFAULT_OPTIONS = {direction: g.Direction.Y, rails: !0, friction: .001, drag: 1e-4, edgeGrip: .5, edgePeriod: 300, edgeDamp: 1, paginated: !1, pagePeriod: 500, pageDamp: .8, pageStopSpeed: 10, pageSwitchSpeed: .5, speedLimit: 10};
         var P = {NONE: 0, EDGE: 1, PAGE: 2};
         s.prototype.outputFrom = function () {
@@ -1780,7 +1811,7 @@
         }, s.prototype.setVelocity = function (t) {
             this._particle.setVelocity1D(t)
         }, s.prototype.setOptions = function (t) {
-            void 0 !== t.direction && ("x" === t.direction ? t.direction = g.Direction.X : "y" === t.direction && (t.direction = g.Direction.Y)), this._scroller.setOptions(t), this._optionsManager.setOptions(t), void 0 === this.options.margin && (this.options.margin = 1e3), this.drag.setOptions({strength: this.options.drag}), this.friction.setOptions({strength: this.options.friction}), this.spring.setOptions({period: this.options.edgePeriod, dampingRatio: this.options.edgeDamp}), this.sync.setOptions({rails: this.options.rails, direction: this.options.direction === g.Direction.X ? O.DIRECTION_X : O.DIRECTION_Y})
+            void 0 !== t.direction && ("x" === t.direction ? t.direction = g.Direction.X : "y" === t.direction && (t.direction = g.Direction.Y)), this._scroller.setOptions(t), this._optionsManager.setOptions(t), void 0 === this.options.margin && (this.options.margin = 1e3), this.drag.setOptions({strength: this.options.drag}), this.friction.setOptions({strength: this.options.friction}), this.spring.setOptions({period: this.options.edgePeriod, dampingRatio: this.options.edgeDamp}), this.sync.setOptions({rails: this.options.rails, direction: this.options.direction === g.Direction.X ? x.DIRECTION_X : x.DIRECTION_Y})
         }, s.prototype.goToPreviousPage = function () {
             if (!this._node)return null;
             var t = this._node.getPrevious();
@@ -1802,7 +1833,7 @@
             }
             return this._eventOutput.emit("pageChange", {direction: 1}), t
         }, s.prototype.sequenceFrom = function (t) {
-            return t instanceof Array && (t = new T({array: t})), this._node = t, this._scroller.sequenceFrom(t)
+            return t instanceof Array && (t = new E({array: t})), this._node = t, this._scroller.sequenceFrom(t)
         }, s.prototype.getSize = function () {
             return this._scroller.getSize.apply(this._scroller, arguments)
         }, s.prototype.render = function () {
@@ -1833,8 +1864,8 @@
                 }
             })
         }
-    }), i("main", ["require", "exports", "module", "famous/core/Engine", "famous/core/Entity", "famous/core/EventHandler", "famous/math/Matrix", "famous/core/Modifier", "famous/core/RenderNode", "famous/core/Surface", "famous/core/Transform", "famous/core/View", "famous/core/ViewSequence", "famous/views/Scrollview", "famous/inputs/FastClick", "famous/transitions/Transitionable", "famous/utilities/Utility"], function (t) {
-        Famous.Engine = t("famous/core/Engine"), Famous.Entity = t("famous/core/Entity"), Famous.EventHandler = t("famous/core/EventHandler"), Famous.Matrix = t("famous/math/Matrix"), Famous.Modifier = t("famous/core/Modifier"), Famous.RenderNode = t("famous/core/RenderNode"), Famous.Surface = t("famous/core/Surface"), Famous.Transform = t("famous/core/Transform"), Famous.View = t("famous/core/View"), Famous.ViewSequence = t("famous/core/ViewSequence"), Famous.Scrollview = t("famous/views/Scrollview"), Famous.FastClick = t("famous/inputs/FastClick"), Famous.Transitionable = t("famous/transitions/Transitionable"), Famous.Utility = t("famous/utilities/Utility"), _.each(Famous._onLoad, function (e) {
+    }), i("main", ["require", "exports", "module", "famous/core/Engine", "famous/core/Entity", "famous/core/EventHandler", "famous/math/Matrix", "famous/core/Modifier", "famous/core/RenderNode", "famous/core/Surface", "famous/core/Transform", "famous/core/View", "famous/core/ViewSequence", "famous/views/Lightbox", "famous/views/Scrollview", "famous/inputs/FastClick", "famous/transitions/Transitionable", "famous/utilities/Utility"], function (t) {
+        Famous.Engine = t("famous/core/Engine"), Famous.Entity = t("famous/core/Entity"), Famous.EventHandler = t("famous/core/EventHandler"), Famous.Matrix = t("famous/math/Matrix"), Famous.Modifier = t("famous/core/Modifier"), Famous.RenderNode = t("famous/core/RenderNode"), Famous.Surface = t("famous/core/Surface"), Famous.Transform = t("famous/core/Transform"), Famous.View = t("famous/core/View"), Famous.ViewSequence = t("famous/core/ViewSequence"), Famous.Lightbox = t("famous/views/Lightbox"), Famous.Scrollview = t("famous/views/Scrollview"), Famous.FastClick = t("famous/inputs/FastClick"), Famous.Transitionable = t("famous/transitions/Transitionable"), Famous.Utility = t("famous/utilities/Utility"), _.each(Famous._onLoad, function (e) {
             e(t)
         })
     }), UI.body.rendered = function() { e(["main"]) }
