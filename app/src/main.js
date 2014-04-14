@@ -14,6 +14,7 @@ define(function (require, exports, module) {
     Famous.View = require('famous/core/View');
     Famous.ViewSequence = require('famous/core/ViewSequence');
 
+    Famous.Lightbox = require('famous/views/Lightbox');
     Famous.Scrollview = require('famous/views/Scrollview');
 
     Famous.FastClick = require('famous/inputs/FastClick');
