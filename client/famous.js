@@ -1,7 +1,7 @@
-// setup famous app
-
 require("famous-polyfills"); // Add polyfills
 require("famous/core/famous"); // Add the default css file
+
+Application = null;
 
 Meteor.startup(function () {
     var Engine = require("famous/core/Engine");
@@ -38,24 +38,18 @@ Meteor.startup(function () {
         });
     };
 
-    App.prototype.goTo = function (sectionName) {
-        if (this._sectionSurfaces[sectionName]) {
-            this.lightbox.show(this._sectionSurfaces[sectionName]);
+    App.prototype.show = function (sectionName) {
+        var surface = this._sectionSurfaces[sectionName];
+        if (surface) {
+            this.lightbox.show(surface);
         }
     };
 
-
     // create the App from the template
-    var app = new App();
+    Application = new App();
 
     // hook the app into the context
     var appContext = Engine.createContext();
-    appContext.add(app);
-    Engine.pipe(app);
-
-    //Link famous to meteor navigator
-    Navigation.configure({
-        addSection: app.addSection.bind(app),
-        goTo: app.goTo.bind(app)
-    });
+    appContext.add(Application);
+    Engine.pipe(Application);
 });

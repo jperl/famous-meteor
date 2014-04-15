@@ -1,4 +1,4 @@
-// setup template events
+// ------------------ templates -------------------
 
 Template.home.events({
     click: function () {
@@ -10,4 +10,30 @@ Template.about.events({
     click: function () {
         Router.go('home');
     }
+});
+
+// setup famous sections from templates
+Meteor.startup(function () {
+    Application.addSection('home', Template.home);
+    Application.addSection('about', Template.about, { content: 'Example data' });
+});
+
+// ------------------ routing -------------------
+
+Router.map(function () {
+    this.route('home', {
+        path: '/',
+        template: 'blank',
+        onBeforeAction: function () {
+            Application.show('home');
+        }
+    });
+
+    this.route('about', {
+        path: '/about',
+        template: 'blank',
+        onBeforeAction: function () {
+            Application.show('about');
+        }
+    });
 });
