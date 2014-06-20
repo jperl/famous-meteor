@@ -23,7 +23,6 @@ Meteor.startup(function () {
 Router.map(function () {
     this.route('home', {
         path: '/',
-        template: 'blank',
         onBeforeAction: function () {
             Application.show('home');
         }
@@ -31,7 +30,6 @@ Router.map(function () {
 
     this.route('about', {
         path: '/about',
-        template: 'blank',
         onBeforeAction: function () {
             Application.show('about');
         }
