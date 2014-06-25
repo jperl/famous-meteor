@@ -23,14 +23,14 @@ Meteor.startup(function () {
 Router.map(function () {
     this.route('home', {
         path: '/',
-        onBeforeAction: function () {
+        action: function () {
             Application.show('home');
         }
     });
 
     this.route('about', {
         path: '/about',
-        onBeforeAction: function () {
+        action: function () {
             Application.show('about');
         }
     });
